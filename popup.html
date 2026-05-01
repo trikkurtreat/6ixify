@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 240px;
+      background: #0d0d0d;
+      color: #f0f0f0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      padding: 18px 16px 14px;
+    }
+
+    .header { margin-bottom: 16px; }
+
+    .title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #FFD700;
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+
+    .subtitle {
+      font-size: 11px;
+      color: #555;
+      margin-top: 3px;
+    }
+
+    /* Slider */
+    .slider-wrap {
+      margin-bottom: 16px;
+    }
+
+    .slider-level {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .slider-level-name {
+      color: #FFD700;
+      font-weight: 700;
+    }
+
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 4px;
+      background: #2a2a2a;
+      border-radius: 2px;
+      outline: none;
+      margin-bottom: 8px;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #FFD700;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    .level-labels {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .level-labels span {
+      font-size: 10px;
+      color: #444;
+      cursor: pointer;
+      transition: color 0.15s;
+      user-select: none;
+    }
+
+    .level-labels span.active {
+      color: #FFD700;
+      font-weight: 600;
+    }
+
+    /* Button */
+    #mainBtn {
+      width: 100%;
+      padding: 11px;
+      border: none;
+      border-radius: 8px;
+      background: #FFD700;
+      color: #0d0d0d;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      margin-bottom: 8px;
+    }
+
+    #mainBtn:hover:not(:disabled) { opacity: 0.85; }
+    #mainBtn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    #mainBtn.active {
+      background: #1e1e1e;
+      color: #FFD700;
+      border: 1.5px solid #FFD700;
+    }
+
+    #status {
+      font-size: 11px;
+      color: #666;
+      text-align: center;
+      min-height: 16px;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    #status.error { color: #ff6b6b; }
+
+    .footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    #settingsBtn {
+      background: none;
+      border: none;
+      color: #444;
+      font-size: 11px;
+      cursor: pointer;
+      padding: 2px 0;
+    }
+
+    #settingsBtn:hover { color: #888; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="title">6ixify</div>
+    <div class="subtitle">Toronto Slang Translator</div>
+  </div>
+
+  <div class="slider-wrap">
+    <div class="slider-level">Intensity: <span class="slider-level-name" id="levelName">Etobicoke</span></div>
+    <input type="range" id="levelSlider" min="0" max="2" step="1" value="1">
+    <div class="level-labels">
+      <span data-level="0">Yorkville</span>
+      <span data-level="1">Etobicoke</span>
+      <span data-level="2">Scarborough</span>
+    </div>
+  </div>
+
+  <button id="mainBtn">6ixify This Page</button>
+  <div id="status"></div>
+
+  <div class="footer">
+    <button id="settingsBtn">⚙ Settings</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
